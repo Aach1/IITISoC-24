@@ -1,3 +1,3 @@
 # IITISoC-24
 
-# A model that takes a video and an image as input and gives milk as output
+# A model that replaces the background of an input video with an image
