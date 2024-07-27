@@ -1,10 +1,15 @@
 # IITISoC-24
 
+# Team
+Harshith Jai Surya Ganji - 230041010 (team leader)
+Mullapudi Namaswi - 230041023
+Korubilli Vasihnavi - 230041016
+
 # Video Background Replacement using DeepLabV3 and Streamlit
 
 This project is a Streamlit application that allows users to replace the background of a video with a custom background image using a pre-trained DeepLabV3 model for segmentation.
 
-# Overview
+# Approach
 
 The application uses a pre-trained DeepLabV3 model from PyTorch to segment the foreground (person) from the background in a video. The segmented foreground is then combined with a user-provided background image to generate a new video with the replaced background.
 
@@ -33,3 +38,7 @@ The application uses a pre-trained DeepLabV3 model from PyTorch to segment the f
 Streamlit for providing the framework for this application.
 PyTorch for the DeepLabV3 model and other utilities.
 COCO dataset for providing the segmentation classes.
+
+# Contributions
+Pipeline and model implementation - Namaswi and Vaishnavi
+Helper functions - Harshith
