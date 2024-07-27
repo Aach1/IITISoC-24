@@ -22,3 +22,14 @@ The application uses a pre-trained DeepLabV3 model from PyTorch to segment the f
 -numpy
 -pillow
 -tempfile
+
+# Overview of working of app
+- a pre-trained model (deeplabv3) is used for segmentation
+- a pipeline is built to preprocess frames of video
+- helper function takes input and applies masking on them, separating backgrounds and foregrounds
+- a second function is used to combine required background and foreground to produce output
+
+# Acknowledgements
+Streamlit for providing the framework for this application.
+PyTorch for the DeepLabV3 model and other utilities.
+COCO dataset for providing the segmentation classes.
