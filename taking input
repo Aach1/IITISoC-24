@@ -1,0 +1,4 @@
+st.title('Video Background Replacement')
+
+input_video_file = st.file_uploader("Upload Input Video", type=["mp4"])
+background_image_file = st.file_uploader("Upload Background Image", type=["jpg"])
