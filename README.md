@@ -21,4 +21,4 @@ The application uses a pre-trained DeepLabV3 model from PyTorch to segment the f
 -torchvision
 -numpy
 -pillow
-
+-tempfile
