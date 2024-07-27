@@ -1,0 +1,2 @@
+# Load the pretrained DeepLabV3 model
+replace_model = models.segmentation.deeplabv3_resnet101(pretrained=True).eval()
