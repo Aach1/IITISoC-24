@@ -1,0 +1,39 @@
+if st.button('Process Video'):
+    if input_video_file and background_image_file:
+
+        # Create a temporary file to store the input video
+        input_video_path = tempfile.NamedTemporaryFile(delete=False, suffix='.mp4').name
+        with open(input_video_path, 'wb') as f:
+            f.write(input_video_file.read())
+
+        cap = cv2.VideoCapture(input_video_path)
+        fps = cap.get(cv2.CAP_PROP_FPS)
+        width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+        height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+
+        # Read and resize the background image
+        background_image = Image.open(background_image_file)
+        background_image = background_image.resize((width, height))
+        background_image = np.array(background_image)
+
+        # Create a temporary file to store the output video
+        output_video_path = tempfile.NamedTemporaryFile(delete=False, suffix='.mp4').name
+        fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+        out = cv2.VideoWriter(output_video_path, fourcc, fps, (width, height))
+
+        while cap.isOpened():
+            ret, frame = cap.read()
+            if not ret:
+                break
+            frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+            output_frame = process_frame(frame_rgb, background_image)
+            output_frame_bgr = cv2.cvtColor(output_frame, cv2.COLOR_RGB2BGR)
+            out.write(np.uint8(output_frame_bgr))
+
+        cap.release()
+        out.release()
+
+        st.success("Processing complete. Watch the video below.")
+        st.video(output_video_path)
+    else:
+        st.error("Please upload both video and image files.")
